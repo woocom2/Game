@@ -5,6 +5,7 @@
 #include "Game.h"
 
 #include "Engine/RendererDX11.h"
+#include "Loader.h"
 
 #define MAX_LOADSTRING 100
 
@@ -50,6 +51,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	{
 		return FALSE;
 	}
+
+	Loader loader;
+	loader.LoadObj(L"../resource/Porsche_911_GT2.obj");
 
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_GAME));

@@ -1,8 +1,24 @@
 #pragma once
 
-#include <xnamath.h>
+struct Float3
+{
+	Float3(float _x, float _y, float _z)
+	:x(_x), y(_y), z(_z){}
+
+	float x, y, z;
+};
+
+struct Float2
+{
+	Float2(float _x, float _y)
+	:x(_x), y(_y){}
+
+	float x, y;
+};
 
 struct MeshInfo
 {
-	const XMVECTOR* vertices;
+	Float3* vertices;
+	Float3* normals;
+	Float2* texCoords;
 };
