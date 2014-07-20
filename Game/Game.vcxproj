@@ -81,19 +81,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common.h" />
     <ClInclude Include="Engine\IRenderer.h" />
     <ClInclude Include="Engine\RendererDX11.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="IMesh.h" />
     <ClInclude Include="Loader.h" />
+    <ClInclude Include="MaterialDX11.h" />
     <ClInclude Include="MeshDX11.h" />
     <ClInclude Include="MeshInfo.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\RendererDX11.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="MeshDX11.cpp" />

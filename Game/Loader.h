@@ -1,8 +1,17 @@
 #pragma once
 
-struct MeshInfo;
+#include <d3d11.h>
+#include "common.h"
+
+class Entity;
 class Loader
 {
 public:
-	const MeshInfo* LoadObj(const wchar_t* filename) const;
+	Loader(ID3D11Device* pDevice) : m_pDevice(pDevice){}
+	~Loader(){}
+
+	Entity* LoadModel(const wchar_t* filename) const;
+
+private:
+	ID3D11Device*		m_pDevice;
 };

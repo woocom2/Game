@@ -52,8 +52,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		return FALSE;
 	}
 
-	Loader loader;
-	loader.LoadObj(L"../resource/Porsche_911_GT2.obj");
+	Loader loader(renderer.GetDevice());
+	loader.LoadModel(L"../resource/MURCIELAGO640.vtx");
 
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_GAME));

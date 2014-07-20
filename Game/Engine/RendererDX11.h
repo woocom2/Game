@@ -9,9 +9,10 @@ public:
 	RendererDX11() : m_hWnd(nullptr), m_pDevice(nullptr), m_pContext(nullptr) {}
 	virtual ~RendererDX11(){}
 
-	HRESULT Initialize(HWND hWnd);
-	void	Render();
-	void	Destroy();
+	HRESULT				Initialize(HWND hWnd);
+	void				Render();
+	void				Destroy();
+	ID3D11Device*		GetDevice() const { return m_pDevice; }
 
 private:
 	HWND					m_hWnd;

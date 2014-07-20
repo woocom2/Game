@@ -16,6 +16,7 @@ public:
 	bool LoadFile(const wchar_t* file);
 	void RecursiveNode(FbxNode* pNode);
 	void ReadMesh(FbxMesh* pMesh);
+	void ReadMaterial(FbxNode* pNode);
 	void Print(const char* text, ...);
 
 private:

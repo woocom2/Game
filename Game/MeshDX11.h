@@ -1,17 +1,17 @@
 #pragma once
 
-#include "IMesh.h"
 #include <d3d11.h>
 
+struct MeshInfo;
 class MaterialDX11;
-class MeshDX11 : public IMesh
+class MeshDX11
 {
 public:
-	MeshDX11(){}
+	MeshDX11() : m_pVB(nullptr), m_pIB(nullptr), m_pMaterial(nullptr){}
 	~MeshDX11(){}
 
-	virtual void Initialize(const MeshInfo& info);
-	virtual void Draw();
+	void Initialize(ID3D11Device* pDevice, const MeshInfo& info);
+	void Draw(ID3D11DeviceContext* pContext);
 
 private:
 	// 복사방지, 구현안함
