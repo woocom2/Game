@@ -1,0 +1,20 @@
+cbuffer cbPerFrame : register( b1 )
+{
+	float3		g_vLightDir				: packoffset( c0 );
+};
+
+struct PS_INPUT
+{
+	float3 normal		: NORMAL;
+	float2 texcoord		: TEXCOORD;
+};
+
+float4 PSMain( PS_INPUT Input ) : SV_TARGET
+{	
+	float fLighting = saturate( dot( g_vLightDir, Input.normal ) );
+
+	float4 vDiffuse = float4(fLighting, fLighting, fLighting, 1.0f);
+	float4 vAmbient = float4(0.1f, 0.1f, 0.1f, 1.0f);
+	
+	return vDiffuse + vAmbient;
+}
