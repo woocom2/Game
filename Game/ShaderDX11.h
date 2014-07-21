@@ -9,6 +9,7 @@ public:
 	~ShaderDX11(){}
 
 	void	Initialize(ID3D11Device* pDevice, const wchar_t* name);
+	void	SetShader(ID3D11DeviceContext* pContext);
 
 private:
 	HRESULT CompileShader(const wchar_t* name, ID3DBlob** ppBlob);

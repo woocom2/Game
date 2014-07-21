@@ -3,11 +3,11 @@
 #include <d3d11.h>
 
 struct MeshInfo;
-class MaterialDX11;
+class ShaderDX11;
 class MeshDX11
 {
 public:
-	MeshDX11() : m_pVB(nullptr), m_pIB(nullptr), m_pMaterial(nullptr){}
+	MeshDX11() : m_pVB(nullptr), m_pIB(nullptr), m_pShader(nullptr){}
 	~MeshDX11(){}
 
 	void Initialize(ID3D11Device* pDevice, const MeshInfo& info);
@@ -19,7 +19,8 @@ private:
 	MeshDX11& operator =(const MeshDX11& other);
 
 private:
+	UINT				m_indexCount;
 	ID3D11Buffer*		m_pVB;
 	ID3D11Buffer*		m_pIB;
-	MaterialDX11*		m_pMaterial;
+	ShaderDX11*			m_pShader;
 };

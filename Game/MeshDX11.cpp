@@ -2,6 +2,7 @@
 
 #include "MeshDX11.h"
 #include "MeshInfo.h"
+#include "ShaderDX11.h"
 
 void MeshDX11::Initialize(ID3D11Device* pDevice, const MeshInfo& info)
 {
@@ -38,6 +39,8 @@ void MeshDX11::Initialize(ID3D11Device* pDevice, const MeshInfo& info)
 		{
 			return;
 		}
+
+		m_indexCount = info.m_iTriCount * 3;
 	}
 }
 
@@ -49,12 +52,11 @@ void MeshDX11::Draw(ID3D11DeviceContext* pContext)
 	pContext->IASetVertexBuffers(0, 1, &m_pVB, &iStride, &iOffset);
 	pContext->IASetIndexBuffer(m_pIB, DXGI_FORMAT_R16_UINT, 0);
 
-	//// Set the vertex input layout.
-	//deviceContext->IASetInputLayout(m_layout);
+	pContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	//// Set the vertex and pixel shaders that will be used to render this triangle.
-	//deviceContext->VSSetShader(m_vertexShader, NULL, 0);
-	//deviceContext->PSSetShader(m_pixelShader, NULL, 0);
+	m_pShader->SetShader(pContext);
+
+	pContext->DrawIndexed(m_indexCount, 0, 0);
 
 	//// Render the triangle.
 	//deviceContext->DrawIndexed(indexCount, 0, 0);
