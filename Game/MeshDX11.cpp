@@ -41,6 +41,11 @@ void MeshDX11::Initialize(ID3D11Device* pDevice, const MeshInfo& info)
 		}
 
 		m_indexCount = info.m_iTriCount * 3;
+
+		// 셰이더 세팅
+		// 일단 하드코딩 나중에 모델 데이터에서 세팅된 메테리얼을 읽도록 수정
+		m_pShader = new ShaderDX11();
+		m_pShader->Initialize(pDevice, L"phongShader");
 	}
 }
 

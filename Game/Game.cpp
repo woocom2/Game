@@ -6,6 +6,7 @@
 
 #include "Engine/RendererDX11.h"
 #include "Loader.h"
+#include "Entity.h"
 
 #define MAX_LOADSTRING 100
 
@@ -53,7 +54,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	}
 
 	Loader loader(renderer.GetDevice());
-	loader.LoadModel(L"../resource/MURCIELAGO640.vtx");
+	Entity* pRoot = loader.LoadModel(L"../resource/MURCIELAGO640.vtx");
 
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_GAME));
@@ -70,7 +71,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
-			renderer.Render();
+			pRoot->Render(renderer.GetDeviceContext());
 		}
 	}
 

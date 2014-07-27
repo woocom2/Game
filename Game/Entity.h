@@ -16,6 +16,8 @@ public:
 	void AttachChild(Entity* pChild);
 	void Render(ID3D11DeviceContext* pContext);
 
+	bool IsEmpty();
+
 private:
 	void SetParent(Entity* pParent);
 

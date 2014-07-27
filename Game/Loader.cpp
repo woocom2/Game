@@ -87,5 +87,12 @@ Entity* Loader::LoadModel(const wchar_t* filename) const
 		}
 
 	}
-	return nullptr;
+
+	if (pRoot->IsEmpty())
+	{
+		delete pRoot;
+		return nullptr;
+	}
+	
+	return pRoot;
 }

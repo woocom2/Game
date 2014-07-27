@@ -13,6 +13,7 @@ public:
 	void				Render();
 	void				Destroy();
 	ID3D11Device*		GetDevice() const { return m_pDevice; }
+	ID3D11DeviceContext*	GetDeviceContext() const { return m_pContext; }
 
 private:
 	HWND					m_hWnd;

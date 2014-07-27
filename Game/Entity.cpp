@@ -43,3 +43,25 @@ void Entity::Render(ID3D11DeviceContext* pContext)
 		}
 	}
 }
+
+bool Entity::IsEmpty()
+{
+	if (m_pMesh)
+	{
+		// mesh가 존재하면 비어있지 않음
+		return false;
+	}
+	else
+	{
+		size_t iCount = m_Child.size();
+		for (UINT i = 0; i < iCount; ++i)
+		{
+			if (m_Child[i])
+			{
+				return m_Child[i]->IsEmpty();
+			}
+		}
+	}
+
+	return true;
+}

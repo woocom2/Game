@@ -3,16 +3,31 @@
 
 #include <d3dx11.h>
 #include <d3dcompiler.h>
+#include <string>
+#include <assert.h>
 
 void ShaderDX11::Initialize(ID3D11Device* pDevice, const wchar_t* name)
 {
+	const int bufferSize = 128;
+	wchar_t buffer[bufferSize] = { 0, };
+	
+	size_t nameLength = wcslen(buffer);
+	wcsncpy_s(buffer, nameLength, name, bufferSize);
+
+	// name + L".vs" 길이가 버퍼 길이를 넘지는지 체크
+	assert(nameLength + 3 < bufferSize);
+
+	wcsncpy_s(buffer+nameLength, 3, L".vs", bufferSize-3);
+
 	ID3DBlob* pVertexShaderBuffer = nullptr;
-	CompileShader(L"phongShader.vs", &pVertexShaderBuffer);
+	CompileShader(buffer, &pVertexShaderBuffer);
 	pDevice->CreateVertexShader(pVertexShaderBuffer->GetBufferPointer(), 
 		pVertexShaderBuffer->GetBufferSize(), nullptr, &m_pVertexShader);
 	
+	wcsncpy_s(buffer + nameLength, 3, L".ps", bufferSize-3);
+
 	ID3DBlob* pPixelShaderBuffer = nullptr;
-	CompileShader(L"phongShader.ps", &pPixelShaderBuffer);
+	CompileShader(buffer, &pPixelShaderBuffer);
 	pDevice->CreatePixelShader(pPixelShaderBuffer->GetBufferPointer(), 
 		pPixelShaderBuffer->GetBufferSize(), nullptr, &m_pPixelShader);
 
